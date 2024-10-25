@@ -1,4 +1,3 @@
-import React from 'react'
 import Landing from '../components/Landing'
 import LatestCollection from '../components/LatestCollection'
 import BestSeller from '../components/Bestseller'
