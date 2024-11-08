@@ -20,7 +20,7 @@ const Landing = () => {
         </div>
 
         {/*Landing Right Side*/}
-        <img className='w-full sm:w-1/2 ' src={assets.hero_img} alt="" />
+        <img className='w-full sm:w-1/2' src={assets.hero_img} alt="" />
     </div>
   )
 }
