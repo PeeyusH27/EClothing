@@ -16,14 +16,20 @@ import { SignedIn, SignUp, useAuth, useUser } from '@clerk/clerk-react';
 
 
 const App = () => {
-  const { user } = useUser()
+
+  {console.log('username: democheck@gmail.com')
+  console.log('password: democheck123')}
 
   const { isSignedIn } = useAuth();
   
   if (!isSignedIn) {
     return <div className="flex justify-center items-center h-screen">
       <div className='signup h-screen w-full absolute'></div>
-      <SignUp />
+      <SignUp signInUrl='/login'/>
+      <div className='demo bg-white/80 p-5 rounded-lg absolute right-5 bottom-4 font-bold text-black text-center'>
+        <h1 className='text-xl font-extrabold'>For Demo check console</h1>
+        <p className='text-sm font-medium'>(click SIGN-IN and copy paste details in console)</p>
+      </div>
     </div> 
   }
 
