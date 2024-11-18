@@ -2,22 +2,31 @@ import React, { useContext, useState } from 'react'
 import { assets } from '../assets/assets'
 import { Link, NavLink } from 'react-router-dom'
 import { ShopContext } from '../context/ShopContext'
+import { SignOutButton, useAuth, UserButton, useUser } from '@clerk/clerk-react'
 
 
 const Navbar = () => {
-
+    const { user } = useUser()
     const [visible, setVisible] = useState(false)
 
     const { setShowSearch, getCartCount } = useContext(ShopContext)
-
+    const { isSignedIn } = useAuth();
 
 
     return (
         <div className='flex item-center justify-between py-5 font-medium'>
-            {/* Links Default, Home, Collection, About, Contact */}
-            <Link to='/'>
-                <img src={assets.logo} alt="Logo" className='w-36' />
-            </Link>
+            
+            {
+                !isSignedIn ? (
+                    <img src={assets.logo} alt="Logo" className='w-36' />
+                ) : (
+                    <Link to='/'>
+                        <img src={assets.logo} alt="Logo" className='w-36 ' />
+                    </Link>
+                )
+            }
+
+
             <ul className='hidden sm:flex mt-2 gap-5 text-md text-gray-700'>
                 <NavLink to='/' className='flex flex-col items-center gap-1'>
                     <p>Home</p>
@@ -35,14 +44,14 @@ const Navbar = () => {
 
 
             <div className='flex items-center gap-6'>
-                <img onClick={()=>setShowSearch(true)} src={assets.search_icon} className='w-5 cursor-pointer' alt="search" />
+                <img onClick={() => setShowSearch(true)} src={assets.search_icon} className='w-5 cursor-pointer' alt="search" />
                 <div className='group relative'>
                     <img className='w-5 cursor-pointer' src={assets.profile_icon} alt="" />
-                    <div className="group-hover:block hidden absolute dropdown-menu right-0 pt-4">
-                        <div className="flex flex-col gap-2 w-36 py-3 bg-slate-100 text-gray-500 rounded">
-                            <p className='cursor-pointer hover:text-black'>My Profile</p>
-                            <p className='cursor-pointer hover:text-black'>Orders</p>
-                            <p className='cursor-pointer hover:text-black'>Logout</p>
+                    <div className="group-hover:block hidden absolute dropdown-menu text-center right-0 pt-4">
+                        <div className="flex flex-col gap-2 w-36 p-3 bg-slate-100 text-gray-500 rounded-xl">
+                            <p className='cursor-pointer hover:text-white hover:bg-black p-2 rounded-lg flex gap-1 items-center'><UserButton />{isSignedIn ? user.firstName : "User"}</p>
+                            <p className='cursor-pointer hover:text-white hover:bg-black p-2 rounded-lg'>Orders</p>
+                            <p className='cursor-pointer hover:text-white hover:bg-black p-2 rounded-lg'><SignOutButton /></p>
                         </div>
                     </div>
                 </div>
