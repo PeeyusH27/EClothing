@@ -6,10 +6,9 @@ import NewsLetter from '../components/NewsLetter'
 
 const Home = () => {
   return (
-    <div>
+    <div className='w-full'>
       <Landing /> {/*HERO*/}
       <LatestCollection />
-      {/* <BestSeller /> */}
       <OurPolicy />
       <NewsLetter />
     </div>
