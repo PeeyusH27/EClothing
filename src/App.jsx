@@ -26,9 +26,8 @@ const App = () => {
     return <div className="flex justify-center items-center h-screen">
       <div className='signup h-screen w-full absolute'></div>
       <SignUp />
-      <div className='demo bg-white/80 p-5 rounded-lg absolute right-5 bottom-4 font-bold text-black text-center'>
-        <h1 className='text-xl font-extrabold'>For Demo check console</h1>
-        <p className='text-sm font-medium'>(click SIGN-IN and copy paste details in console)</p>
+      <div className='demo bg-white/80 p-2 rounded-lg absolute right-5 bottom-4 font-bold text-black text-center'>
+        <p className='text-sm font-medium'>(For DEMO click SIGN-IN below and use democheck@gmail.com || democheck123)</p>
       </div>
     </div> 
   }
